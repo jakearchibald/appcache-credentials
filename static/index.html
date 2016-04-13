@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html manifest="appcache.manifest">
+<head>
+  <title>This is an evil website</title>
+</head>
+<body>
+  <div></div>
+  <script>
+    var client = new XMLHttpRequest();
+    var div = document.querySelector('div');
+    client.open("GET", "//localhost:3000/");
+    client.onload = function() {
+      div.textContent = 'Text from other origin: ' + client.responseText;
+    };
+    client.send();
+    
+  </script>
+</body>
+</html>
