@@ -9,6 +9,7 @@ friendlyApp.get('/', (req, res) => {
   res.set('Content-Type', 'text/plain');
   res.set('Cache-Control', 'no-cache');
   res.set('Access-Control-Allow-Origin', '*');
+  res.set('Vary', 'Cookie');
   
   if (req.cookies.userId) {
     res.send('You are logged in and your user ID is ' + req.cookies.userId);
@@ -26,5 +27,5 @@ friendlyApp.listen(3000, () => {
 evilApp.use('/', express.static('static'));
 
 evilApp.listen(3001, () => {
-  console.log('Friendly app listening on port 3001!');
+  console.log('Evil app listening on port 3001!');
 });
